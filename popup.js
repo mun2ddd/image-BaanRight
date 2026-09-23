@@ -102,7 +102,7 @@ function bindModeButtons() {
 
             els.runBtn.textContent =
                 currentMode === "image"
-                    ? "Save screenshot"
+                    ? "Save image"
                     : "Translate & extract";
         });
     });
