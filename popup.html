@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>BaanRight</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">&#3610;</span>
+      <span class="brand-name">BaanRight</span>
+    </div>
+    <span class="brand-sub">by 16RideRight</span>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="translate" role="tab" aria-selected="true">Translate</button>
+    <button class="tab" data-tab="saved" role="tab" aria-selected="false">Saved</button>
+    <button class="tab" data-tab="alerts" role="tab" aria-selected="false">Alerts</button>
+  </nav>
+
+  <!-- Translate panel -->
+  <section id="panel-translate" class="panel">
+      <div class="input-modes">
+          <button class="mode-btn active" data-mode="text">Paste text</button>
+          <button class="mode-btn" data-mode="image">Screenshot</button>
+      </div>
+
+      <textarea id="thaiText" placeholder="&#3623;&#3634;&#3591; &#3592;&#3629;&#3591; 1 &#3611;&#3619;&#3632;&#3605;&#3641; &#3648;&#3604;&#3639;&#3629;&#3609;&#3621;&#3632; 6000 &#3610;&#3634;&#3607;..." rows="6"></textarea>
+
+      <div id="imageDrop" class="dropzone hidden">
+          <label class="field-label" for="imageInput">Add a photo (optional)</label>
+          <input type="file" id="imageInput" accept="image/*" />
+          <img id="imagePreview" class="hidden" alt="Listing photo preview" />
+      </div>
+
+      <label class="field-label" for="sourceLinkInput" style="margin-top:8px;">Source link (optional)</label>
+      <input type="url" id="sourceLinkInput" placeholder="Paste the Facebook post URL to revisit it later" />
+
+      <button id="runBtn" class="primary-btn">Translate &amp; extract</button>
+      <p id="runStatus" class="status"></p>
+
+      <div id="result" class="result hidden">
+          <div class="result-block">
+              <h3>Translation</h3>
+              <p id="translatedText"></p>
+          </div>
+          <div class="result-block">
+              <h3>Details</h3>
+              <dl id="detailsList" class="details-grid"></dl>
+          </div>
+          <div class="result-block">
+              <h3>Distance</h3>
+              <p id="distanceText"></p>
+          </div>
+
+          <button id="saveListingBtn" class="secondary-btn">Save this listing</button>
+          <p id="saveStatus" class="status"></p>
+
+          <button id="toggleReplyBtn" class="secondary-btn">Ask the landlord</button>
+          <div id="replyPanel" class="reply-panel hidden">
+              <p class="hint">Pick what you want to ask - we'll translate it to Thai for you.</p>
+              <div id="replyOptions" class="reply-options"></div>
+              <button id="generateReplyBtn" class="primary-btn">Generate Thai message</button>
+              <textarea id="replyOutput" class="hidden" rows="4" readonly></textarea>
+              <button id="copyReplyBtn" class="chip-btn hidden">Copy message</button>
+          </div>
+      </div>
+  </section>
+
+  <!-- Saved listings panel -->
+  <section id="panel-saved" class="panel hidden">
+    <div id="savedEmpty" class="empty-state">
+      <p>No saved listings yet.</p>
+      <p class="hint">Translate a post and tap "Save this listing" to keep it here.</p>
+    </div>
+    <ul id="savedList" class="saved-list"></ul>
+  </section>
+
+  <!-- Alerts panel -->
+  <section id="panel-alerts" class="panel hidden">
+    <p class="hint">Set a rough budget and area so you can compare listings faster.</p>
+    <div class="alert-form">
+      <input id="alertArea" type="text" placeholder="Preferred area, e.g. Fah Thai market" />
+      <input id="alertPrice" type="number" placeholder="Max price (THB/month)" />
+      <button id="addAlertBtn" class="secondary-btn">Add preference</button>
+    </div>
+    <ul id="alertsListUI" class="saved-list"></ul>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
